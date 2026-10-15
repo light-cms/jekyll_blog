@@ -5,8 +5,6 @@ on:
     branches:
       - main
   workflow_dispatch:
-  repository_dispatch:
-    types: [content_update, blog_update]
 
 permissions:
   contents: read
@@ -17,24 +15,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/jdx/mise:2026.9.6
+      image: docker.io/jekyll/jekyll:latest
     steps:
       - name: checkout code
         uses: actions/checkout@main
-      - name: cache mise dependencies
+      - name: cache jekyll dependencies
         uses: actions/cache@main
         with:
-          path: |
-            ~/.local/share/mise/installs
-            ~/.local/share/mise/cache
-          key: mise-${{ runner.os }}-${{ hashFiles('mise.toml') }}
+          path: /srv/jekyll
+          key: jekyll-${{ runner.os }}-${{ hashFiles('Gemfile.lock') }}
           restore-keys: |
-            mise-${{ runner.os }}-
+            jekyll-${{ runner.os }}-
+
       - name: Build
         run: |
-            mise trust
-            mise deps
-            mise run build
+            bundle install
+            bundle exec jekyll build --incremental
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@main

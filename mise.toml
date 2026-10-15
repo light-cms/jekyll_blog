@@ -1,5 +1,0 @@
-[tools]
-ruby = "3.4"
-
-[tasks]
-build = "bundle install && bundle exec jekyll build"
