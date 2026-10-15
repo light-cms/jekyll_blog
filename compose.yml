@@ -1,0 +1,11 @@
+services:
+  jekyll:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: jekyll_blog
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    volumes:
+      - .:/srv/jekyll:Z
