@@ -28,10 +28,7 @@ jobs:
             jekyll-${{ runner.os }}-
 
       - name: Build
-        run: |
-            bundle install
-            bundle exec jekyll build --incremental
-
+        run: bundle exec jekyll build --incremental
       - name: Upload artifact
         uses: actions/upload-pages-artifact@main
         with:
