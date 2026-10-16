@@ -5,7 +5,7 @@ permalink: /about/
 description: About this boilerplate.
 ---
 
-# About
+## About
 
 This is a basic displayable Jekyll starter. It includes:
 
