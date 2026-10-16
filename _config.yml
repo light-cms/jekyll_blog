@@ -1,5 +1,6 @@
 title: Jekyll Blog
 description: A basic displayable Jekyll blog boilerplate.
+baseurl: "/jekyll_blog"
 markdown: kramdown
 plugins:
   - jekyll-feed
